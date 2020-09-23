@@ -1,0 +1,26 @@
+define intcode(*program[], noun, verb) {
+	auto pc, v1, v2, v3
+	scale = 0
+	pc = 0
+	program[1] = noun
+	program[2] = verb
+	while(program[pc] != 99) {
+		if (program[pc] == 1) {
+			v1 = program[pc+1]
+			v2 = program[pc+2]
+			v3 = program[pc+3]
+			program[v3] = program[v1] + program[v2]
+			pc += 4
+			continue
+		}
+		if (program[pc] == 2) {
+			v1 = program[pc+1]
+			v2 = program[pc+2]
+			v3 = program[pc+3]
+			program[v3] = program[v1] * program[v2]
+			pc += 4
+			continue
+		}
+		
+	}
+}
