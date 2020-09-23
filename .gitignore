@@ -1,0 +1,4 @@
+#ignore 'input' auxialliary files
+input
+#ignore '__pycache__' folders
+__pycache__/
