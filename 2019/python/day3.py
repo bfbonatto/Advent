@@ -1,5 +1,4 @@
 from sys import stdin
-from graphics import *
 
 def move(init, direction, amount):
 	x,y = init
@@ -37,12 +36,9 @@ def parse(wire):
 	return path
 
 
-#wire1 = parse(stdin.readline().split(','))
-#wire2 = parse(stdin.readline().split(','))
-#
-#print([p for p in wire1 if p in wire2])
+wire1 = parse(stdin.readline().split(','))
+wire2 = parse(stdin.readline().split(','))
 
-def main():
-	window = GraphWin("Test", 640, 480)
-
-main()
+for x,y in wire1:
+	if (x,y) in wire2:
+		print(f"({x},{y})")
