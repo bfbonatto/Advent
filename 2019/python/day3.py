@@ -27,7 +27,7 @@ def parse(wire):
 	current = (0,0)
 	path = []
 	for m in wire:
-		direction, amount = m[0],int(m[1])
+		direction, amount = m[0],int(m[1:])
 		next = move(current, direction, amount)
 		x0,y0 = current
 		x1,y1 = next
@@ -35,10 +35,21 @@ def parse(wire):
 		current = next
 	return path
 
+def part1(wire1,wire2):
+	w1 = set(wire1)
+	w2 = set(wire2)
+	for p in w1.intersection(w2):
+		print(f"|{p}| = {abs(p[1]) + abs(p[0])}")
+
+def part2(wire1, wire2):
+	i1 = {p:i for i,p in enumerate(wire1)}
+	i2 = {p:i for i,p in enumerate(wire2)}
+	w1 = set(wire1)
+	w2 = set(wire2)
+	for p in w1.intersection(w2):
+		print(f"steps to {p} = {i1[p] + i2[p] + 2}")
 
 wire1 = parse(stdin.readline().split(','))
 wire2 = parse(stdin.readline().split(','))
+part2(wire1,wire2)
 
-for x,y in wire1:
-	if (x,y) in wire2:
-		print(f"({x},{y})")
